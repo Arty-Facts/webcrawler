@@ -1,8 +1,5 @@
-import requests
 from requests_html import HTMLSession
 from collections import deque
-import copy
-import json
 
 def main(base, start):
     session = HTMLSession()
