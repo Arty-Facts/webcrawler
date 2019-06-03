@@ -15,7 +15,7 @@ def search(goal, frontier, viseted):
         # Max number hyper links expanded
         if c > MAX:
             break
-        #dont go to fast
+        #dont go to fast you will get blocked!!!
         sleep(0.5)
         # get next link for expantion
         link = frontier.popleft()
