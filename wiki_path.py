@@ -1,6 +1,7 @@
 from requests_html import HTMLSession
 from collections import deque
 from lib.pather import Pather
+from time import sleep
 
 import sys
 
@@ -14,6 +15,8 @@ def search(goal, frontier, viseted):
         # Max number hyper links expanded
         if c > MAX:
             break
+        #dont go to fast
+        sleep(0.5)
         # get next link for expantion
         link = frontier.popleft()
         # fetch the html page
@@ -23,7 +26,7 @@ def search(goal, frontier, viseted):
             # if it dose not start with /wiki we migth leave the wikipedia
             # . is an indecation of fetching unwanted data like ".png"
             # we are not alowde to expand likes we have seen erlier (viseted)
-            if next_link[0:5] == "/wiki" and "." not in next_link and next_link not in viseted:
+            if next_link[0:5] == "/wiki" and "." not in next_link and "Category:" not in next_link and next_link not in viseted:
                 # Add all links in current page as children
                 viseted[link].children.append(next_link)
 
